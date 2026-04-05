@@ -1,6 +1,6 @@
 SDK_UnlitGeneric
 {
-	"$baseTexture" 	"backpack\weapons\c_models\c_rocketjumper\c_rocketjumper_large"
+	"$baseTexture"	 "backpack/workshop/weapons/c_models/c_caber/c_caber_tf2c_large"
 	"$translucent"	"1"
 	"$vertexcolor"	"1"
 	"$ignorez"	"1"
