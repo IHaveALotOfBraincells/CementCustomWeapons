@@ -5249,7 +5249,7 @@
 }
 
 // ------------------------------------------------------------------------------------ //
-// BRRRT Launcher
+// Mortal Mortar
 // ------------------------------------------------------------------------------------ //
 
 "Weapon_Burster.Shoot"
@@ -5276,6 +5276,17 @@
 	"wave"		"weapons/burster_explode1.wav"
 	"wave"		"weapons/burster_explode2.wav"
 	"wave"		"weapons/burster_explode3.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// Smokegrenade
+// ------------------------------------------------------------------------------------ //
+"Weapon_SmokeGrenade.Explode"
+{
+	"channel"	"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_98dB"
+	"volume"	"1"
+	"wave"		"weapons/smokegrenade_explode.wav"
 }
 
 // ------------------------------------------------------------------------------------ //
@@ -5715,6 +5726,25 @@
 	"soundlevel"	"SNDLVL_94dB"
 	"volume"		"1.0"
 	"wave"			")weapons/austen_smg_FireCrit.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// Lil Mac
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_Lil_Mac.Single"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"1.0"
+	"wave"			")weapons/mac_smg_shoot.wav"
+}
+"Weapon_Lil_Mac.SingleCrit"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"1.0"
+	"wave"			")weapons/mac_smg_shoot_crit.wav"
 }
 
 // ------------------------------------------------------------------------------------ //
