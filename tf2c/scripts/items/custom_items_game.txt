@@ -163,6 +163,7 @@
 				"knife explain"			"1"
 				"min_viewmodel_offset"	"5 0 -4"
 				"tranq melee boost" "1"
+				"knife explain 2" "1"
 			}
 
 			"image_inventory"		"backpack/weapons/w_models/w_knife"
@@ -2513,7 +2514,7 @@
 				"flat heal on afterburn on active"
 				{
 					"attribute_class"	"flat_heal_on_afterburn_active"
-					"value"				"2"
+					"value"				"3"
 				}
 				"remove targets afterburn on death"
 				{
@@ -3180,6 +3181,82 @@
 			"mouse_pressed_sound"	"ui/item_light_gun_pickup.wav"
 			"drop_sound"			"ui/item_light_gun_drop.wav"
 		}
+		"7302" // hot hand
+		{
+			"name"				"hot hand"
+			"item_name"			"hot hand"
+			"item_type_name"	"Glove"
+			"item_description"	""
+			"item_quality"		"normal"
+			"propername"	 "1"
+			"item_class"	"tf_weapon_fireaxe"
+			"item_slot"		"melee"
+			"anim_slot"	"MELEE_ALLCLASS"
+			"used_by_classes"
+			{
+				"Pyro"	"1"
+			}
+
+			"model_player"		"models/weapons/v_models/v_slappers/v_slappers_pyro.mdl"
+			"model_world"		""
+			"attach_to_hands"	"2"
+			"static_attrs"
+			{
+				"min_viewmodel_offset"	"10 0 -9"
+			}
+			"attributes"
+			{
+				"crit vs burning players"
+				{
+					"attribute_class"		"or_crit_vs_playercond"
+					"value"				"1"
+				}
+				"slappers explain" "1"
+				"damage penalty"
+				{
+					"attribute_class"		"mult_dmg"
+					"value"				"0.46"
+				}
+				"crit mod disabled"
+				{
+					"attribute_class"	"mult_crit_chance"
+					"value"				"0"
+				}
+				"hidden separator" "1"
+				"single wep holster time increased"
+				{
+					"attribute_class"		"mult_switch_from_wep_deploy_time"
+					"value"				"0.8"
+				}
+				"single wep deploy time increased"
+				{
+					"attribute_class"		"mult_single_wep_deploy_time"
+					"value"				"0.8"
+				}
+			}
+			"visuals"
+			{
+				"animation_replacement"
+				{
+					"ACT_MP_ATTACK_STAND_MELEE_ALLCLASS"		"ACT_MP_ATTACK_STAND_ITEM3"
+					"ACT_MP_ATTACK_CROUCH_MELEE_ALLCLASS"		"ACT_MP_ATTACK_CROUCH_ITEM3"
+					"ACT_MP_ATTACK_SWIM_MELEE_ALLCLASS"			"ACT_MP_ATTACK_SWIM_ITEM3"
+				}
+				"player_poseparam"
+				{
+					"r_hand_grip"		"15"
+					"r_arm"				"3"
+				}
+				"sound_deploy"			"Weapon_Slap.Draw"
+				"sound_melee_miss"		"Weapon_Fist.Miss"
+				"sound_melee_hit"		"Weapon_Slap.HandHit"
+				"sound_melee_hit_world"	"Weapon_Fist.HitWorld"
+				"sound_burst"			"Weapon_Fist.MissCrit"
+			}
+			"mouse_pressed_sound"		"#ui/item_rubber_pickup.wav"
+			"drop_sound"				"#ui/item_fists_drop.wav"
+			"image_inventory"		"backpack/weapons/c_models/c_slapping_glove/w_slapping_glove_large.vtf"
+		}
 		"7303" // db shotgun
 		{
 			"name"				"db shotgun"
@@ -3227,6 +3304,11 @@
 					"value" "1.25"
 				}
 				"hidden separator" "1"
+				"weapon spread bonus"
+				{
+					"attribute_class"	"mult_spread_scale"
+					"value" "0.75"
+				}
 				"Reload time decreased"
 				{
 					"attribute_class"	"mult_reload_time"
@@ -3800,26 +3882,31 @@ Animations by: 'Kylul'"
 					"attribute_class"	"mod_max_primary_clip_override"
 					"value"	"3"
 				}
-				"damage penalty"
+				"can overload"
 				{
-					"attribute_class"		"mult_dmg"
-					"value"				"0.85"
+					"attribute_class"	"can_overload"
+					"value"	"1"
 				}
+				//"damage penalty"
+				//{
+				//	"attribute_class"		"mult_dmg"
+				//	"value"				"0.9"
+				//}
 				"Blast radius decreased"
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"	"0.85"
+					"value"	"0.8"
 				}
 				"rocket gravity"
 				{
 					"attribute_class"	"mod_rocket_gravity"
 					"value"				"1"
 				}
-				"auto fires when full"
-				{
-					"attribute_class"	"auto_fires_when_full"
-					"value"				"1"
-				}
+				//"auto fires when full"
+				//{
+				//	"attribute_class"	"auto_fires_when_full"
+				//	"value"				"1"
+				//}
 				"hidden separator"		"1"
 				"fire rate bonus"
 				{
@@ -3925,7 +4012,7 @@ Animations by: 'Kylul'"
 			"name"				"Unfortunate Son"
 			"item_name"			"Unfortunate Son"
 			"item_type_name"	"Assault Rifle"
-			"item_description"	"Model by: 'Hau, Kibbleknight'
+			"item_description"	"Model by: 'Haau'
 Animations by: 'Raptor Dan'"
 			"item_quality"		"normal"
 
@@ -4104,7 +4191,7 @@ Animations by: 'GarlikBread'"
 		"7101" // coffee
 		{
 			"name"				"Coffee"
-			"item_name"			"Matcha Coffee"
+			"item_name"			"Matcha latte"
 			"item_type_name"	"Throwable Coffee"
 			"item_description"	"Model by: 'ZombiePlasticClock' 'NassimO'"
 			"item_quality"		"normal"
@@ -4126,6 +4213,16 @@ Animations by: 'GarlikBread'"
 					"value"				"3"
 				}
 				"hidden separator" "1"
+				"stickybomb charge rate"
+				{
+					"attribute_class"	"stickybomb_charge_rate"
+					"value"				"0.0"
+				}
+				"effect bar recharge rate increased"
+				{
+					"attribute_class"	"effectbar_recharge_ratee"
+					"value"				"0.66"
+				}
 				"weapon burn time reduced"
 				{
 					"attribute_class"	"mult_wpn_burntime"
@@ -4139,7 +4236,7 @@ Animations by: 'GarlikBread'"
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.335"
+					"value"				"0.375"
 				}
 				"Blast radius increased"
 				{
@@ -4178,7 +4275,6 @@ Animations by: 'GarlikBread'"
 			"visuals"
 			{
 				"sound_special1"		"Scout.DodgeCanOpen"
-
 			}
 			"item_logname"	"mirv"
 			"item_iconname"	"mirv_projectile"
@@ -4437,7 +4533,7 @@ Animations by: 'GarlikBread'"
 					"attribute_class"		"set_cannot_disguise"
 					"value"				"1"
 				}
-				"gun spy explain" "1"
+				//"gun spy explain" "1"
 				"hidden separator"		"1"
 				"maxammo secondary increased"
 				{
@@ -4805,6 +4901,7 @@ Animations by: 'GarlikBread'"
 				"class select override vcd" 	"class_select_gunboats_sticky"
 				"tommy sticky explain" "1"
 				"Reload time decreased" "0.7"
+				"sticky arm time bonus" "-0.1"
 				"Blast radius decreased" "0.9"
 				"damage penalty" "0.8"
 				"max pipebombs decreased" "-3"
@@ -4813,8 +4910,11 @@ Animations by: 'GarlikBread'"
 				"fire rate bonus" "0.1"
 				"auto fires full clip" "1"
 				"clip size penalty" "0.625"
-				"stickybomb fizzle time" "2"
+				"stickybomb fizzle time" "3"
 				"projectile spread angle penalty" "5"
+				"auto fires when full" "1"
+				"stickybomb charge rate mine layer" "0.0"
+				"charge weapon no extra speed" "1"
 			}
 			"attributes"
 			{
@@ -5070,6 +5170,16 @@ Animations by: 'GarlikBread'"
 					"value"				"5.0"
 				}
 				"hidden separator" "1"
+				"stickybomb charge rate"
+				{
+					"attribute_class"	"stickybomb_charge_rate"
+					"value"				"0.5"
+				}
+				"effect bar recharge rate increased"
+				{
+					"attribute_class"	"effectbar_recharge_ratee"
+					"value"				"0.825"
+				}
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
@@ -16109,7 +16219,7 @@ Animations by: 'GarlikBread'"
 		{
 			"name"					"gun spy explain"
 			"attribute_class"		"explain"
-			"description_string"	"No crits to tranquilized enemies"
+			"description_string"	"No crits against tranquilized enemies"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"negative"
@@ -16150,6 +16260,26 @@ Animations by: 'GarlikBread'"
 			"name"					"coffee explain"
 			"attribute_class"		"explain"
 			"description_string"	"Throw at enemies to set them on fire"
+			"description_format"	"value_is_additive"
+			"hidden"				"0"
+			"effect_type"			"neutral"
+			"stored_as_integer"		"1"
+		}
+		"4041"
+		{
+			"name"					"slappers explain"
+			"attribute_class"		"explain"
+			"description_string"	"+20% faster switch and holster speed on weapon"
+			"description_format"	"value_is_additive"
+			"hidden"				"0"
+			"effect_type"			"positive"
+			"stored_as_integer"		"1"
+		}
+		"4042"
+		{
+			"name"					"knife explain 2"
+			"attribute_class"		"explain"
+			"description_string"	"Mini-crits against tranquilized enemies"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"neutral"
