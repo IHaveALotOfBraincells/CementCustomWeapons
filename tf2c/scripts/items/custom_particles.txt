@@ -1,0 +1,5 @@
+particles_manifest
+{
+	file    "!particles/nowp_flamethrower.pcf"
+	file    "!nowp_wpnfx.pcf"
+}

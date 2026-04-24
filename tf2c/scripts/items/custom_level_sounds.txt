@@ -5389,6 +5389,35 @@
 }
 
 // ------------------------------------------------------------------------------------ //
+// FIRE HOSE
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_FireHose.FireStart"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_94dB"
+	"wave"			")weapons/fire_hose_start.wav"
+}
+"Weapon_FireHose.WindDown"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_94dB"
+	"wave"			")weapons/fire_hose_end.wav"
+}
+"Weapon_FireHose.FireLoop"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"wave"			")weapons/fire_hose_loop.wav"
+}
+"Weapon_FireHose.FireLoopCrit"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"wave"			")weapons/fire_hose_loop_crit.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
 // Hunting shot
 // ------------------------------------------------------------------------------------ //
 

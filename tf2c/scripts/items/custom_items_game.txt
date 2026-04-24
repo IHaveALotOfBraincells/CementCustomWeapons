@@ -583,7 +583,7 @@
 				"stickybomb explain"			"1"
 				"min_viewmodel_offset"			"10 0 -10"
 				"class select override vcd" 	"class_select_gunboats_sticky"
-				"Blast radius decreased" "0.9"
+				"stickybomb fizzle time" "8"
 			}
 
 			"image_inventory"		"backpack/weapons/w_models/w_stickybomb_launcher"
@@ -623,6 +623,7 @@
 				"flame_random_life_time_offset"	"0.100000"
 				"flame_velocity_fade_start"		"0.300000"
 				"flame_velocity_fade_end"		"0.500000"
+				"extinguish restores health" "20"
 			}
 			"visuals"
 			{
@@ -3012,6 +3013,45 @@
 			"mouse_pressed_sound"	"ui/item_light_gun_pickup.wav"
 			"drop_sound"			"ui/item_light_gun_drop.wav"
 		}
+		"7702" // Bonesaw
+		{
+			"name"				"TF_WEAPON_BONESAW"
+			"item_name"			"saw"
+			"item_type_name"	"#TF_Weapon_Bonesaw"
+			"item_description"	"#TF_Weapon_Bonesaw_Desc"
+			"item_quality"		"normal"
+			"show_in_armory" "0"
+			"item_class"	"tf_weapon_bonesaw"
+			"item_slot"		"melee"
+			"used_by_classes"
+			{
+				"Medic"	"1"
+			}
+
+			"model_player"		"models/weapons/v_models/v_bonesaw_medic.mdl"
+			"model_world"		"models/weapons/w_models/w_bonesaw.mdl"
+			"attach_to_hands"	"2"
+			"static_attrs"
+			{
+				"min_viewmodel_offset"	"10 0 -12"
+			}
+			"attributes"
+			{
+				"damage penalty"
+				{
+					"attribute_class"		"mult_dmg"
+					"value"				"0.2"
+				}
+				"mod burstfire"
+				{
+					"attribute_class"	"mod_burstfire"
+					"value" "5 0.245"
+				}
+			}
+			"image_inventory"		"backpack/weapons/w_models/w_bonesaw"
+			"mouse_pressed_sound"	"ui/item_metal_weapon_pickup.wav"
+			"drop_sound"			"ui/item_metal_weapon_drop.wav"
+		}
 		"7300" // Air Superiority
 		{
 			"name"				"air superiority"
@@ -3060,6 +3100,12 @@
 					"attribute_class"	"mult_airblast_cost"
 					"value"	"0.5"
 				}
+				"slappers explain" "1"
+				"extinguish restores health"
+				{
+					"attribute_class"	"extinguish_restores_health"
+					"value"	"20"
+				}
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
@@ -3069,6 +3115,17 @@
 				{
 					"attribute_class"	"mult_wpn_burndmg"
 					"value"	"0.666"
+				}
+				"hidden separator" "1"
+				"single wep holster time increased"
+				{
+					"attribute_class"		"mult_switch_from_wep_deploy_time"
+					"value"				"0.8"
+				}
+				"single wep deploy time increased"
+				{
+					"attribute_class"		"mult_single_wep_deploy_time"
+					"value"				"0.8"
 				}
 			}
 			"visuals"
@@ -3111,10 +3168,20 @@
 					"attribute_class"	"special_taunt"
 					"value" "1"
 				}
-				"crit_vs_burning_FLARES_DISPLAY_ONLY"
+				"not crit vs burning flare"
 				{
-					"attribute_class"	"crit_vs_burning_FLARES_DISPLAY_ONLY"
+					"attribute_class"	"not_crit_vs_burning_flare"
 					"value"				"1"
+				}
+				"mod crit airborne simple"
+				{
+					"attribute_class"	"crit_airborne_simple"
+					"value"				"1"
+				}
+				"apply z velocity on damage"
+				{
+					"attribute_class"	"apply_z_velocity_on_damage"
+					"value"				"-1000"
 				}
 				"spitfire explain 2" "1"
 				"Projectile speed increased"
@@ -3128,22 +3195,27 @@
 					"value"				"1.2"
 				}
 				"spitfire explain" "1"
-				"maxammo secondary reduced"
-				{
-					"attribute_class"	"mult_maxammo_secondary"
-					"value"				"0.5"
-				}
+				//"maxammo secondary reduced"
+				//{
+				//	"attribute_class"	"mult_maxammo_secondary"
+				//	"value"				"0.75"
+				//}
 				"reload while not active explain"	"1"
 				"hidden separator" "1"
-				"add condition on kill"
+				"mod crit airborne simple min height"
 				{
-					"attribute_class"	"add_onkill_addcond_self"
-					"value"	"32 2"
+					"attribute_class"	"crit_airborne_simple_min_height"
+					"value"				"-90"
 				}
+				//"add condition on kill"
+				//{
+				//	"attribute_class"	"add_onkill_addcond_self"
+				//	"value"	"32 2"
+				//}
 				"mod projectile heat seek power"
 				{
 					"attribute_class"	"mod_projectile_heat_seek_power"
-					"value"				"0.01"
+					"value"				"0.0001"
 				}
 				"weapon burn time reduced"
 				{
@@ -3153,7 +3225,7 @@
 				"rocket limited lifetime"
 				{
 					"attribute_class"	"rocket_lifetime"
-					"value"	"8"
+					"value"	"6"
 				}
 			}
 
@@ -3203,36 +3275,48 @@
 			"static_attrs"
 			{
 				"min_viewmodel_offset"	"10 0 -9"
+				//"weapon enemy knockback mod mult hidden" "4"
 			}
 			"attributes"
 			{
-				"crit vs burning players"
+				//"crit vs burning players"
+				//{
+				//	"attribute_class"		"or_crit_vs_playercond"
+				//	"value"				"1"
+				//}
+				//"slappers explain" "1"
+				//"fishwhacker sweep"
+				//{
+				//	"attribute_class"	"deflect_on_smack_hit_player"
+				//	"value"				"1"
+				//}
+				"deflect on smack hidden"
 				{
-					"attribute_class"		"or_crit_vs_playercond"
+					"attribute_class"	"deflect_on_smack"
 					"value"				"1"
 				}
-				"slappers explain" "1"
+				"hot hand explain" "1"
 				"damage penalty"
 				{
 					"attribute_class"		"mult_dmg"
-					"value"				"0.46"
+					"value"				"0.7"
 				}
-				"crit mod disabled"
-				{
-					"attribute_class"	"mult_crit_chance"
-					"value"				"0"
-				}
+				//"crit mod disabled"
+				//{
+				//	"attribute_class"	"mult_crit_chance"
+				//	"value"				"0"
+				//}
 				"hidden separator" "1"
-				"single wep holster time increased"
-				{
-					"attribute_class"		"mult_switch_from_wep_deploy_time"
-					"value"				"0.8"
-				}
-				"single wep deploy time increased"
-				{
-					"attribute_class"		"mult_single_wep_deploy_time"
-					"value"				"0.8"
-				}
+				//"single wep holster time increased"
+				//{
+				//	"attribute_class"		"mult_switch_from_wep_deploy_time"
+				//	"value"				"0.8"
+				//}
+				//"single wep deploy time increased"
+				//{
+				//	"attribute_class"		"mult_single_wep_deploy_time"
+				//	"value"				"0.8"
+				//}
 			}
 			"visuals"
 			{
@@ -3324,10 +3408,114 @@
 			"mouse_pressed_sound"	"ui/item_medium_gun_pickup.wav"
 			"drop_sound"			"ui/item_heavy_gun_drop.wav"
 		}
+		"7304" // firehose
+		{
+			"name"				"firehose"
+			"item_name"			"spray n' pray"
+			"item_type_name"	"Waterhose"
+			"item_description"	"Model by: 'GoLDeN [Mad Dill]'"
+			"item_quality"		"normal"
+			"extra_wearable" 	"models/player/items/pyro/fireman_helmet.mdl"
+			"item_class"		"tf_weapon_flamethrower"
+			"item_slot"			"primary"
+			"propername" "1 "
+			"used_by_classes"
+			{
+				"Pyro"	"1"
+			}
+
+			"model_world"				"models/weapons/w_models/w_firehose/w_firehose_pyro.mdl"
+			"model_player"				"models/weapons/v_models/v_firehose/v_firehose_pyro.mdl"
+			"attach_to_hands"	"2"
+			"static_attrs"
+			{
+				"min_viewmodel_offset"	"10 0 -10"
+
+				"flame_gravity"					"0"
+				"flame_drag"					"8.500000"
+				"flame_up_speed"				"50"
+				"flame_speed"					"2450"
+				"flame_spread_degree"			"2.800000"
+				"flame_lifetime"				"0.600000"
+				"flame_random_life_time_offset"	"0.100000"
+				"flame_velocity_fade_start"		"0.300000"
+				"flame_velocity_fade_end"		"0.500000"
+			}
+			"attributes"
+			{
+				//"mark for death"
+				//{
+				//	"attribute_class"	"mark_for_death"
+				//	"value"	"1"
+				//}
+				"add condition on hit weapon"
+				{
+					"attribute_class"	"add_onhit_addcond_weapon"
+					"value"	"27 4"
+				}
+				"slow enemy on hit major"
+				{
+					"attribute_class"		"mult_onhit_enemyspeed_major"
+					"value"	"1"
+				}
+				"firehose explain" "1"
+				"slappers explain" "1"
+				"damage penalty"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"	"0.4"
+				}
+				"airblast disabled"
+				{
+					"attribute_class"		"airblast_disabled"
+					"value"	"1"
+				}
+				"spitfire explain" "1"
+				"hidden separator" "1"
+				"weapon burn time reduced"
+				{
+					"attribute_class"	"mult_wpn_burntime"
+					"value"	"-200"
+				}
+				"weapon burn time reduced"
+				{
+					"attribute_class"	"mult_wpn_burntime"
+					"value"	"-200"
+				}
+				"single wep holster time increased"
+				{
+					"attribute_class"		"mult_switch_from_wep_deploy_time"
+					"value"				"0.8"
+				}
+				"single wep deploy time increased"
+				{
+					"attribute_class"		"mult_single_wep_deploy_time"
+					"value"				"0.8"
+				}
+			}
+			"visuals"
+			{
+				"sound_single_shot"		"Weapon_FireHose.FireStart"
+				"sound_reload"			"Weapon_FireHose.FireLoop"								// TF2C v2.1.0 - Flamethrower now uses a a hacky fix to remedy the looping flame sound bug (which came from airblasting an explosive projectile)
+				"sound_special3"		"Weapon_FireHose.WindDown"
+				"sound_burst"			"Weapon_FireHose.FireLoopCrit"
+				"beam_effect"			"firehose_steam"
+				"animation_replacement"
+				{
+					"ACT_MP_ATTACK_CROUCH_SECONDARYFIRE"	"ACT_MP_ATTACK_CROUCH_PRIMARY_ALT"
+					"ACT_MP_ATTACK_STAND_SECONDARYFIRE"		"ACT_MP_ATTACK_STAND_PRIMARY_ALT"
+					"ACT_MP_ATTACK_SWIM_SECONDARYFIRE"		"ACT_MP_ATTACK_SWIM_PRIMARY_ALT"
+				}
+			}
+
+			"image_inventory"			"backpack/weapons/w_models/w_firehose"
+			"mouse_pressed_sound"	"ui/item_flamethrower_pickup.wav"
+			"drop_sound"			"ui/item_heavy_gun_drop.wav"
+		}
 		"7500"
 		{
 		    "name"						"Heavy Shotgun"
-			"item_class"				"TF_WEAPON_SHOTGUN_PRIMARY"
+			"item_class"				"tf_weapon_shotgun"
 			"show_in_armory"			"1"
 			"item_slot"					"primary"
 			"anim_slot"					"secondary"
@@ -3346,6 +3534,8 @@ Animations by: 'Kylul'"
 			"model_player"				"models/weapons/v_models/v_barrakada/v_barrakada_fix.mdl"
 			"extra_wearable"			"models/workshop/player/items/heavy/dec24_battle_balaclava_style2/dec24_battle_balaclava_style2.mdl"
 			"attach_to_hands"			"2"
+			"bucket"					"0"
+			"bucket_position"			"0"
 			"used_by_classes"
 			{
 				"heavy"					"1"
@@ -3567,8 +3757,8 @@ Animations by: 'Kylul'"
 		{
 			"name"		"Lead Pipe"
 			"item_class"	"saxxy"
-			"item_logname"	"pipe"
-			"item_iconname"	"pipe"
+			"item_logname"	"lead pipe"
+			"item_iconname"	"lead pipe"
 			"item_description"	"Model by: 'void~, Z'"
 			"show_in_armory"	"1"
 			"item_type_name"	"Lead Pipe"
@@ -3900,7 +4090,7 @@ Animations by: 'Kylul'"
 				"rocket gravity"
 				{
 					"attribute_class"	"mod_rocket_gravity"
-					"value"				"1"
+					"value"				"0.9"
 				}
 				//"auto fires when full"
 				//{
@@ -3921,7 +4111,7 @@ Animations by: 'Kylul'"
 				"projectile spread angle penalty"
 				{
 					"attribute_class"	"projectile_spread_angle"
-					"value"				"4.5"
+					"value"				"4"
 				}
 			}
 			"visuals"
@@ -3955,10 +4145,10 @@ Animations by: 'Kylul'"
 			}
 			"attributes"
 			{
-				"precision strike explain"
+				"damage bonus"
 				{
-					"attribute_class"		"VISUALONLY"
-					"value"				"1"
+					"attribute_class"		"mult_dmg"
+					"value"				"1.38"
 				}
 				"mod mini-crit airborne"
 				{
@@ -3975,26 +4165,31 @@ Animations by: 'Kylul'"
 					"attribute_class"	"mult_explosion_radius"
 					"value"	"0.3"
 				}
-				"hidden separator"		"1"
-				"damage bonus"
+				"precision strike explain"
 				{
-					"attribute_class"		"mult_dmg"
-					"value"				"1.1075"
-				}
-				"no damage falloff over distance"
-				{
-					"attribute_class"	"mod_no_dmg_falloff"
+					"attribute_class"		"VISUALONLY"
 					"value"				"1"
 				}
+				"hidden separator"		"1"
+				"custom rampup"
+				{
+					"attribute_class"	"mod_custom_rampup"
+					"value"				"0.6"
+				}
+				"longer damage falloff distance"
+				{
+					"attribute_class"	"mult_falloff_distance"
+					"value"				"1.75"
+				}
+				//"no damage falloff over distance"
+				//{
+				//	"attribute_class"	"mod_no_dmg_falloff"
+				//	"value"				"1"
+				//}
 				"custom projectile model"
 				{
 					"attribute_class"	"custom_projectile_model"
 					"value"				"models/weapons/w_models/w_rocketbeta.mdl"
-				}
-				"custom rampup"
-				{
-					"attribute_class"	"mod_custom_rampup"
-					"value"				"1"
 				}
 			}
 			"visuals"
@@ -4900,17 +5095,17 @@ Animations by: 'GarlikBread'"
 				"min_viewmodel_offset"			"10 0 -10"
 				"class select override vcd" 	"class_select_gunboats_sticky"
 				"tommy sticky explain" "1"
-				"Reload time decreased" "0.7"
+				"Reload time decreased" "0.65"
 				"sticky arm time bonus" "-0.1"
 				"Blast radius decreased" "0.9"
 				"damage penalty" "0.8"
 				"max pipebombs decreased" "-3"
-				"tommy sticky explain 2" "1"
+				//"tommy sticky explain 2" "1"
+				"stickybomb fizzle time" "3"
 				"hidden separator" "1"
 				"fire rate bonus" "0.1"
 				"auto fires full clip" "1"
 				"clip size penalty" "0.625"
-				"stickybomb fizzle time" "3"
 				"projectile spread angle penalty" "5"
 				"auto fires when full" "1"
 				"stickybomb charge rate mine layer" "0.0"
@@ -4948,10 +5143,13 @@ Animations by: 'GarlikBread'"
 			"item_description"	"Model by: 'Colteh'
 			Animations by: 'MrPurplePigeon'"
 			"item_quality"		"normal"
-			"item_class"		"tf_weapon_revolver"
+			"item_class"		"tf_weapon_smg"
 			"item_slot"			"primary"
 			"anim_slot"			"secondary"
 			"extra_wearable" 	"models/player/items/sniper/pro_hat.mdl"
+			"bucket"					"0"
+			"bucket_position"			"0"
+
 			"used_by_classes"
 			{
 				"Sniper"	"1"
@@ -4962,6 +5160,21 @@ Animations by: 'GarlikBread'"
 				{
 					"attribute_class"	"add_maxhealth"
 					"value"				"25"
+				}
+				"damage bonus"
+				{
+					"attribute_class"	"mult_damage"
+					"value"				"1.2"
+				}
+				"fire rate bonus"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"0.9"
+				}
+				"clip size bonus"
+				{
+					"attribute_class"	"mult_clipsize"
+					"value"				"1.2"
 				}
 				"headshot minicrit explain"	"1"
 				"eliminator explain"	"1"
@@ -4976,31 +5189,16 @@ Animations by: 'GarlikBread'"
 				//	"attribute_class"		"mult_spread_scale"
 				//	"value"				"0.9"
 				//}
-				"fire rate bonus"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.185"
-				}
-				"clip size bonus"
-				{
-					"attribute_class"	"mult_clipsize"
-					"value"				"5"
-				}
 				"maxammo secondary increased"
 				{
 					"attribute_class"		"mult_maxammo_secondary"
-					"value"				"5"
+					"value"				"1.6"
 				}
-				"damage penalty"
-				{
-					"attribute_class"	"mult_damage"
-					"value"				"0.23"
-				}
-				"longer damage falloff distance"
-				{
-					"attribute_class"	"mult_damage"
-					"value"				"1.36"
-				}
+				//"longer damage falloff distance"
+				//{
+				//	"attribute_class"	"mult_damage"
+				//	"value"				"1.36"
+				//}
 				"headshot is minicrit"
 				{
 					"attribute_class"	"headshot_is_minicrit"
@@ -5127,7 +5325,7 @@ Animations by: 'GarlikBread'"
 				"fire rate penalty"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.25"
+					"value"				"1.2"
 				}
 				"crit mod disabled"
 				{
@@ -5258,14 +5456,15 @@ Animations by: 'GarlikBread'"
 			"static_attrs"
 			{
 				"min_viewmodel_offset"		"10 -2 -9"
+				"mod wrench builds minisentry" "1"
 			}
 			"attributes"
 			{
-				"build small sentries"
-				{
-					"attribute_class"		"build_small_sentries"
-					"value" 	"1"
-				}
+				//"build small sentries"
+				//{
+				//	"attribute_class"		"build_small_sentries"
+				//	"value" 	"1"
+				//}
 				"max health additive bonus"
 				{
 					"attribute_class"	"add_maxhealth"
@@ -5276,11 +5475,11 @@ Animations by: 'GarlikBread'"
 					"attribute_class"		"sentry_build_rate_multiplier"
 					"value" 	"1.35"
 				}
-				"buildings max level penalty"
-				{
-					"attribute_class"	"add_buildings_max_level"
-					"value"	"-2"
-				}
+				//"buildings max level penalty"
+				//{
+				//	"attribute_class"	"add_buildings_max_level"
+				//	"value"	"-2"
+				//}
 				"hidden separator" "1"
 				"mod sentrygun cost"
 				{
@@ -5290,7 +5489,7 @@ Animations by: 'GarlikBread'"
 				"engy sentry damage bonus"
 				{
 					"attribute_class"		"mult_engy_sentry_damage"
-					"value" 	"0.65"
+					"value" 	"0.5"
 				}
 			}
 			"mouse_pressed_sound"	"ui/item_metal_weapon_pickup.wav"
@@ -15854,6 +16053,14 @@ Animations by: 'GarlikBread'"
 			"effect_type"			"positive"
 			"stored_as_integer"		"0"
 		}
+		"5249"
+		{
+			"name"					"mod use custom ammo type"
+			"attribute_class"		"mod_use_custom_ammo_type"
+			"description_format"	"value_is_additive"
+			"effect_type"			"neutral"
+			"stored_as_integer"		"0"
+		}
 		"5250"
 		{
 			"name"					"mod ubercharge cond"
@@ -15985,7 +16192,7 @@ Animations by: 'GarlikBread'"
 		{
 			"name"					"eliminator explain"
 			"attribute_class"		"explain"
-			"description_string"	"Shares ammo pool with the SMG"
+			"description_string"	"Cannot use with secondary SMG"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"negative"
@@ -15995,7 +16202,8 @@ Animations by: 'GarlikBread'"
 		{
 			"name"					"heavy shotgun explain"
 			"attribute_class"		"explain"
-			"description_string"	"-50 health on wearer"
+			"description_string"	"-50 health on wearer
+			Cannot use with secondary shotgun"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"negative"
@@ -16088,7 +16296,8 @@ Animations by: 'GarlikBread'"
 		{
 			"name"					"spitfire explain 2"
 			"attribute_class"		"explain"
-			"description_string"	"Flares are not affected by gravity"
+			"description_string"	"Flares are not affected by gravity
+			Flares bring airborne enemies to the ground"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"positive"
@@ -16189,7 +16398,7 @@ Animations by: 'GarlikBread'"
 		{
 			"name"					"tommy sticky explain 2"
 			"attribute_class"		"explain"
-			"description_string"	"Bombs shatter 2 seconds after landing"
+			"description_string"	"Bombs shatter 3 seconds after landing"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"negative"
@@ -16229,10 +16438,10 @@ Animations by: 'GarlikBread'"
 		{
 			"name"					"precision strike explain"
 			"attribute_class"		"explain"
-			"description_string"	"Weapon deals 100 damage regardless of distance"
+			"description_string"	"Deals less damage at close range"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
-			"effect_type"			"neutral"
+			"effect_type"			"negative"
 			"stored_as_integer"		"1"
 		}
 		"4038"
@@ -16283,6 +16492,26 @@ Animations by: 'GarlikBread'"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"neutral"
+			"stored_as_integer"		"1"
+		}
+		"4043"
+		{
+			"name"					"firehose explain"
+			"attribute_class"		"explain"
+			"description_string"	"On hit: Apply mad milk effect on target for 4s"
+			"description_format"	"value_is_additive"
+			"hidden"				"0"
+			"effect_type"			"positive"
+			"stored_as_integer"		"1"
+		}
+		"4044"
+		{
+			"name"					"hot hand explain"
+			"attribute_class"		"explain"
+			"description_string"	"On hit: Deal knockback to enemies and reflect enemy projectiles"
+			"description_format"	"value_is_additive"
+			"hidden"				"0"
+			"effect_type"			"positive"
 			"stored_as_integer"		"1"
 		}
 	}
