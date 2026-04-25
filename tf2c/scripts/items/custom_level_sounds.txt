@@ -6018,3 +6018,22 @@
     "pitch"		"98, 102"
 	"wave"		")weapons/pipe_HitWorld.wav"
 }
+
+// ------------------------------------------------------------------------------------ //
+// Quickdraw
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_Quickdraw.Single"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"1.0"
+	"wave"			")weapons/revolver_engineer_alt_shoot.wav"
+}
+"Weapon_Quickdraw.SingleCrit"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"1.0"
+	"wave"			")weapons/revolver_engineer_alt_shoot_crit.wav"
+}

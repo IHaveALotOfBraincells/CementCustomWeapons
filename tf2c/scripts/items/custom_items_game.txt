@@ -3261,7 +3261,7 @@
 			"item_description"	""
 			"item_quality"		"normal"
 			"propername"	 "1"
-			"item_class"	"tf_weapon_fireaxe"
+			"item_class"	"tf_weapon_fists"
 			"item_slot"		"melee"
 			"anim_slot"	"MELEE_ALLCLASS"
 			"used_by_classes"
@@ -3290,22 +3290,17 @@
 				//	"attribute_class"	"deflect_on_smack_hit_player"
 				//	"value"				"1"
 				//}
-				"deflect on smack hidden"
+				//"hot hand explain" "1"
+				"fishwhacker sweep"
 				{
-					"attribute_class"	"deflect_on_smack"
+					"attribute_class"	"deflect_on_smack_hit_player"
 					"value"				"1"
 				}
-				"hot hand explain" "1"
 				"damage penalty"
 				{
 					"attribute_class"		"mult_dmg"
-					"value"				"0.7"
+					"value"				"0.75"
 				}
-				//"crit mod disabled"
-				//{
-				//	"attribute_class"	"mult_crit_chance"
-				//	"value"				"0"
-				//}
 				"hidden separator" "1"
 				//"single wep holster time increased"
 				//{
@@ -3511,6 +3506,62 @@
 			"image_inventory"			"backpack/weapons/w_models/w_firehose"
 			"mouse_pressed_sound"	"ui/item_flamethrower_pickup.wav"
 			"drop_sound"			"ui/item_heavy_gun_drop.wav"
+		}
+		"7305" // population controller
+		{
+		    "name"						"Heavy Shotgun"
+			"item_class"				"TF_WEAPON_SHOTGUN_PRIMARY"
+			"show_in_armory"			"0"
+			"item_slot"					"primary"
+			"anim_slot"					"secondary"
+			"image_inventory_size_w"	"128"
+			"image_inventory_size_h"	"82"
+
+			"propername"				"0"
+			"item_name"					"Heavy Shotgun"
+			"item_type_name"			"Heavy Shotgun"
+			"item_description"			"Model by: 'Svdl'"
+            "item_logname"				"Heavy Shotgun"
+			"item_iconname"				"Heavy Shotgun"
+			"image_inventory"			"backpack/weapons/c_models/c_barrakada/c_barrakada"
+			"model_world"				"models/weapons/c_models/c_barrakada/c_barrakada.mdl"
+			"model_player"				"models/weapons/v_models/v_barrakada/v_barrakada_fix.mdl"
+			//"extra_wearable"			"models/workshop/player/items/heavy/dec24_battle_balaclava_style2/dec24_battle_balaclava_style2.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"pyro"					"1"
+			}
+			"static_attrs"
+			{
+				"class select override vcd"				"taunt02_v1"
+				"min_viewmodel_offset"					"5 -2 -10"
+			}
+			"attributes"
+			{
+				"bullets per shot bonus"
+				{
+					"attribute_class"	"mult_bullets_per_shot"
+					"value" "1.66"
+				}
+				"mod max primary clip override"
+				{
+					"attribute_class"	"mod_max_primary_clip_override"
+					"value"	"-1"
+				}
+				"fire rate penalty"
+				{
+					"attribute_class"		"mult_postfiredelay"
+					"value"				"1.3"
+				}
+			}
+			"visuals"
+			{
+			    "sound_single_shot"		"Weapon_HuntingShotgun.Fire"
+				"sound_burst"			"Weapon_HuntingShotgun.FireCrit"
+			}
+			"mouse_pressed_sound"		"#ui/item_pack_pickup.wav"
+			"drop_sound"				"#ui/item_pack_drop.wav"
 		}
 		"7500"
 		{
@@ -4121,6 +4172,7 @@ Animations by: 'Kylul'"
 			}
 			"model_world"				"models/weapons/c_models/c_mortar/c_mortar.mdl"
 			"model_player"				"models/weapons/v_models/v_mortar/v_mortar_soldier.mdl"
+			//"extra_wearable" 			"models/workshop/player/items/soldier/hwn2023_shortness_breath/hwn2023_shortness_breath.mdl"
 			"attach_to_hands"			"2"
 		}
 		"7205" // precision strike
@@ -4128,7 +4180,7 @@ Animations by: 'Kylul'"
 			"name"					"precision strike"
 			"item_name"				"precision strike"
 			"item_type_name"		"#TF_Weapon_RocketLauncher"
-			"item_description"		"Models by: 'Haau'"
+			"item_description"		"Model by: 'Haau'"
 			"item_quality"			"normal"
 			"image_inventory"			"backpack/weapons/c_models/c_precisionstrike/c_precisionstrike_large.vtf"
 			"image_inventory_size_w"	"252"
@@ -4200,6 +4252,7 @@ Animations by: 'Kylul'"
 			}
 			"model_world"				"models/weapons/c_models/c_precisionstrike/c_precisionstrike.mdl"
 			"model_player"				"models/weapons/c_models/c_precisionstrike/c_precisionstrike.mdl"
+			"extra_wearable" 			"models/player/items/soldier/soldier_hat.mdl"
 			"attach_to_hands"			"1"
 		}
 		"7206" // Unfortunate Son
@@ -4343,6 +4396,12 @@ Animations by: 'GarlikBread'"
 				{
 					"attribute_class"	"mult_clipsize"
 					"value" "0.34"
+				}
+				"hidden separator" "1"
+				"spread penalty"
+				{
+					"attribute_class"	"mult_spread_scale"
+					"value" "1.1"
 				}
 				"scattergun no reload single"
 				{
@@ -4590,13 +4649,18 @@ Animations by: 'GarlikBread'"
 					"attribute_class"	"mult_damage"
 					"value"				"0.6"
 				}
-				"lil mac explain" "1"
-				"hidden separator" "1"
-				"weapon spread bonus"
+				"spread penalty"
 				{
-					"attribute_class"		"mult_spread_scale"
-					"value"				"2"
+					"attribute_class"	"mult_spread_scale"
+					"value" "1.8"
 				}
+				//"lil mac explain" "1"
+				"hidden separator" "1"
+				//"weapon spread bonus"
+				//{
+				//	"attribute_class"		"mult_spread_scale"
+				//	"value"				"2"
+				//}
 				"maxammo secondary increased"
 				{
 					"attribute_class"		"mult_maxammo_secondary"
@@ -5456,15 +5520,15 @@ Animations by: 'GarlikBread'"
 			"static_attrs"
 			{
 				"min_viewmodel_offset"		"10 -2 -9"
-				"mod wrench builds minisentry" "1"
+				//"mod wrench builds minisentry" "1"
 			}
 			"attributes"
 			{
-				//"build small sentries"
-				//{
-				//	"attribute_class"		"build_small_sentries"
-				//	"value" 	"1"
-				//}
+				"build small sentries"
+				{
+					"attribute_class"		"build_small_sentries"
+					"value" 	"1"
+				}
 				"max health additive bonus"
 				{
 					"attribute_class"	"add_maxhealth"
@@ -5522,9 +5586,10 @@ Animations by: 'GarlikBread'"
 			"static_attrs"
 			{
 				"min_viewmodel_offset"					"0 0 -8"
-				"maxammo metal increased" "1.5"
+				//"maxammo metal increased" "1.5"
 				"health regen" "4"
-				"move speed penalty" "0.9"
+				//"move speed penalty" "0.9"
+				"torso scale" "0.5"
 			}
 			"attributes"
 			{
@@ -5636,72 +5701,89 @@ Animations by: 'GarlikBread'"
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
-		"7603" // Metal Revolver
+		"7603" // quickdraw
 		{
-			"name"				"Sentry Pistol"
-			"item_description"	"Model by: 'Wowza'"
-			"item_name"			"Auto-Revolver"
-			"item_type_name"	"Jury Rigged Weapon"
-			"item_slot"			"secondary"
-			"anim_slot"			"secondary"
-			"item_class"		"tf_weapon_pistol"
-			"show_in_armory"	"1"
+			"name"						"TF_WEAPON_REVOLVER_ENGI"
+			"item_name"			"#TF_Weapon_Pistol"
+			"item_type_name"	"#TF_Weapon_Pistol"
+			"item_quality"		"normal"
 
-			"image_inventory"			"backpack/weapons/c_models/c_sentry_revolver/c_sentry_revolver"
-			"model_world"				"models/weapons/c_models/c_sentry_revolver/c_sentry_revolver.mdl"
-			"model_player"				"models/weapons/v_models/v_sentry_revolver/v_sentry_revolver.mdl"
-			"attach_to_hands"		"2"
-
+			"item_class"	"tf_weapon_pistol"
+			"show_in_armory"			"1"
+			"item_slot"					"secondary"
+			"propername"				"1"
+			"item_name"					"Quickdraw"
+			"item_type_name"			"#TF_Weapon_Revolver"
+			"item_description"			"Model by 'Z'"
+			"item_logname"				"revolver_quickdraw"
+			"item_iconname"				"revolver_quickdraw"
+			"image_inventory"			"backpack/weapons/w_models/w_quickdraw/w_revolver_quickdraw"
+			"model_world"				"models/weapons/w_models/w_quickdraw/w_revolver_quickdraw.mdl"
+			"model_player"				"models/weapons/v_models/v_quickdraw/v_revolver_quickdraw_engineer.mdl"
+//			"brass_model"				"models/weapons/shells/shell_revolver.mdl"				// Given how small the gun is, it might make sense for it to still eject pistol-sized casings
+			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
-				"Engineer"	"1"
+				"engineer"				"1"
 			}
 			"static_attrs"
 			{
 				"min_viewmodel_offset"	"10 0 -10"
-				"damage bonus" "1.25"
 			}
 			"attributes"
 			{
-				"mod no reload DISPLAY ONLY"
-				{
-					"attribute_class"	"mod_no_reload_display_only"
-					"value"				"1"
-				}
-				"fire rate penalty"
+				"fire rate bonus"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"	"1.5"
+					"value"				"0.8"
 				}
-				"mod ammo per shot"
+				"single wep deploy time decreased"
 				{
-					"attribute_class"	"mod_ammo_per_shot"
-					"value"	"5"
+					"attribute_class"		"mult_single_wep_deploy_time"
+					"value"				"0.7"
 				}
-				"mod use metal ammo type"
+				"clip size penalty"
 				{
-					"attribute_class"	"mod_use_metal_ammo_type"
-					"value"	"1"
+					"attribute_class"	"mult_clipsize"
+					"value"				"0.5"
 				}
-				"hidden separator" "1"
-				//"spread penalty"
+				"spread penalty"
+				{
+					"attribute_class"	"mult_spread_scale"
+					"value" "1.3"
+				}
+				"mod burstfire"
+				{
+					"attribute_class"	"mod_burstfire"
+					"value" "6 1"
+				}
+				"quickdraw explain" "1"
+				//"Reload time increased"
 				//{
-				//	"attribute_class"	"mult_spread_scale"
-				//	"value"	"0.925"
+				//	"attribute_class"	"mult_reload_time"
+				//	"value"				"1.1"
 				//}
-				"mod max primary clip override"
-				{
-					"attribute_class"	"mod_max_primary_clip_override"
-					"value"	"-1"
-				}
 			}
 			"visuals"
 			{
-				"sound_single_shot"		"Weapon_Sentry_Revolver.Single"
-				"sound_burst"			"Weapon_Sentry_Revolver.SingleCrit"
+				"sound_single_shot"			"Weapon_Quickdraw.Single"
+				"sound_burst"				"Weapon_Quickdraw.SingleCrit"
+				"sound_reload"				"Weapon_Revolver.WorldReload"
+				//"muzzle_flash"			"muzzle_sixshooter"
+				"tracer_effect"				"bullet_tracer01"
+				"animation_replacement"
+				{
+					"ACT_MP_ATTACK_STAND_SECONDARY"				"ACT_MP_ATTACK_STAND_PRIMARY"
+					"ACT_MP_ATTACK_CROUCH_SECONDARY"			"ACT_MP_ATTACK_CROUCH_PRIMARY"
+					"ACT_MP_ATTACK_SWIM_SECONDARY"				"ACT_MP_ATTACK_SWIM_PRIMARY"
+
+					"ACT_MP_RELOAD_STAND_SECONDARY"				"ACT_MP_RELOAD_STAND_PRIMARY_ALT"	// Coilgun reload looks closer to the action of reloading a Revolver!
+					"ACT_MP_RELOAD_CROUCH_SECONDARY"			"ACT_MP_RELOAD_CROUCH_PRIMARY_ALT"
+					"ACT_MP_RELOAD_SWIM_SECONDARY"				"ACT_MP_RELOAD_SWIM_PRIMARY_ALT"
+				}
 			}
-			"mouse_pressed_sound"	"ui/item_light_gun_pickup.wav"
-			"drop_sound"			"ui/item_light_gun_drop.wav"
+			"mouse_pressed_sound"		"#weapons/draw_six_shooter.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
 		}
 	}
 	"prefabs"
@@ -16172,7 +16254,8 @@ Animations by: 'GarlikBread'"
 		{
 			"name"					"american diet explain"
 			"attribute_class"		"american_diet_explain"
-			"description_string"	"+100% risk of heart failure"
+			"description_string"	"You are the height of the average american
+			+100% risk of heart failure"
 			"description_format"	"value_is_additive"
 			"effect_type"			"negative"
 			"hidden"				"0"
@@ -16512,6 +16595,16 @@ Animations by: 'GarlikBread'"
 			"description_format"	"value_is_additive"
 			"hidden"				"0"
 			"effect_type"			"positive"
+			"stored_as_integer"		"1"
+		}
+		"4045"
+		{
+			"name"					"quickdraw explain"
+			"attribute_class"		"explain"
+			"description_string"	"Fires the entire clip at once"
+			"description_format"	"value_is_additive"
+			"hidden"				"0"
+			"effect_type"			"neutral"
 			"stored_as_integer"		"1"
 		}
 	}
